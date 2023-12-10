@@ -1,0 +1,37 @@
+version: "3.7"
+
+services:
+  # MySQL Server
+  mysql-docker:
+    image: mysql:latest
+    container_name: dev-mysql
+    environment:
+      MYSQL_DATABASE: MYSQL_DATABASE # Nome do banco de dado
+      MYSQL_ROOT_PASSWORD: 1234567 # Senha para acessar o banco de dados
+    ports:
+      - 3306:3306
+    volumes:
+      - ./.data/mysql/data:/var/lib/mysql
+    networks:
+      - dev-network
+
+  # phpMyAdmin
+  phpmyadmin-docker:
+    image: phpmyadmin/phpmyadmin
+    container_name: dev-phpmyadmin
+    environment:
+      PMA_ARBITRARY: 1
+      PMA_HOST: mysql-docker
+      PMA_USER: root # Trocar para usuario admin
+      PMA_PASSWORD: 1234567 # Trocar para senha admin
+    ports:
+      - 8080:80
+    depends_on:
+      - mysql-docker
+    networks:
+      - dev-network
+
+# Rede
+networks:
+  dev-network:
+    driver: bridge

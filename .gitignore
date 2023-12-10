@@ -1,0 +1,17 @@
+# .gitignore
+
+# Node.js
+node_modules/
+
+# Arquivos de compilação
+dist/
+build/
+
+# Arquivo de ambiente
+.env
+
+# Docker Compose
+docker-compose.yml
+
+# Pasta de dados do MySQL
+.data/
