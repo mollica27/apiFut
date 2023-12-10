@@ -1,9 +1,10 @@
 
+A seguir, apresento um exemplo de estrutura com informações sobre como iniciar o projeto, incluindo o banco de dados no Docker Compose, 
+tecnologias utilizadas e um resumo sobre o que a API faz. 
+Além disso, incluí uma seção com rotas de teste para a ferramenta de teste de requisições (Insomnia, no exemplo):
 
 ```markdown
 # API de Gerenciamento de Campeonato de Futsal
-
-A seguir, apresento um exemplo de estrutura com informações sobre como iniciar o projeto, incluindo o banco de dados no Docker Compose, tecnologias utilizadas e um resumo sobre o que a API faz. Além disso, incluí uma seção com rotas de teste para a ferramenta de teste de requisições (Insomnia, no exemplo):
 
 ## Tecnologias Utilizadas
 
