@@ -4,6 +4,7 @@ const matchController = require('../controllers/matchController');
 
 router.get('/', matchController.getAllMatches);
 router.post('/', matchController.createMatch);
+router.put('/', matchController.editMatch);
 
 
 module.exports = router;

@@ -25,6 +25,30 @@ const standingController = {
     }
   },
   
+  editStanding: async (req, res) => {
+    try {
+      const { standingId, points, goals_scored } = req.body;
+
+      // Procura a classificação no banco de dados pelo ID
+      const standingToUpdate = await Standing.findByPk(standingId);
+
+      // Verifica se a classificação foi encontrada
+      if (!standingToUpdate) {
+        return res.status(404).json({ error: 'Standing not found' });
+      }
+
+      // Atualiza os dados da classificação
+      await standingToUpdate.update({
+        points,
+        goals_scored,
+      });
+
+      res.json(standingToUpdate);
+    } catch (error) {
+      console.error('Error editing standing:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  },
 };
 
 module.exports = standingController;

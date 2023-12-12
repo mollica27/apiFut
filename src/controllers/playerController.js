@@ -35,6 +35,31 @@ const playerController = {
     }
   },
 
+  updatePlayer: async (req, res) => {
+    try {
+      const playerId = req.params.id;
+      const { name, shirt_number } = req.body;
+
+      const playerToUpdate = await Player.findByPk(playerId);
+
+      if (!playerToUpdate) {
+        return res.status(404).json({ error: 'Player not found.' });
+      }
+
+      // Atualizar os campos necessários
+      playerToUpdate.name = name || playerToUpdate.name;
+      playerToUpdate.shirt_number = shirt_number || playerToUpdate.shirt_number;
+
+      // Salvar as alterações no banco de dados
+      await playerToUpdate.save();
+
+      res.json(playerToUpdate);
+    } catch (error) {
+      console.error('Error updating player:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  },
+
 };
 
 module.exports = playerController;

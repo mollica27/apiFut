@@ -41,6 +41,34 @@ const matchController = {
     }
   },
 
+  editMatch: async (req, res) => {
+    try {
+      const { matchId, match_date, start_time, end_time, score_team1, score_team2 } = req.body;
+
+      // Procura a partida no banco de dados pelo ID
+      const matchToUpdate = await Match.findByPk(matchId);
+
+      // Verifica se a partida foi encontrada
+      if (!matchToUpdate) {
+        return res.status(404).json({ error: 'Match not found' });
+      }
+
+      // Atualiza os dados da partida
+      await matchToUpdate.update({
+        match_date,
+        start_time,
+        end_time,
+        score_team1,
+        score_team2,
+      });
+
+      res.json(matchToUpdate);
+    } catch (error) {
+      console.error('Error editing match:', error);
+      res.status(500).json({ error: 'Internal Server Error' });
+    }
+  },
+
 };
 
 module.exports = matchController;
