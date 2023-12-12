@@ -80,18 +80,28 @@ Utilize uma ferramenta de teste de requisições, como [Insomnia](https://insomn
        "team_name": "Nome do Time"
      }
      ```
+3. **Editar Time existente:**
 
-3. **Listar Partidas:**
+   - Método: PUT
+   - URL: `http://localhost:3000/api/teams/{id}`
+   - Corpo:
+     ```json
+     {
+       "team_name": "Nome do Time2"
+     }
+     ```
+
+4. **Listar Partidas:**
 
    - Método: GET
    - URL: `http://localhost:3000/api/matches`
 
-4. **Listar Classificação dos Times:**
+5. **Listar Classificação dos Times:**
 
    - Método: GET
    - URL: `http://localhost:3000/api/standings`
 
-5. **Autenticação na API:**
+6. **Autenticação na API:**
 
    - Método: POST
    - URL: `http://localhost:3000/api/users`
